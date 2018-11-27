@@ -1,1 +1,1 @@
-worker: python reddit.py
+web: python reddit.py
