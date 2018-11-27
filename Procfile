@@ -1,2 +1,2 @@
 web: python reddit.py
-web: node spotifySQL.js
+worker: node spotifySQL.js
