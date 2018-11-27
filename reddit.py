@@ -43,7 +43,7 @@ for submission in reddit.subreddit('music').top('week'):
         rMusic.append(myre.sub(' ', submission.title))
 
 mycursor = mydb.cursor()
-query = "INSERT INTO songs (reddit, data) VALUES (rMusic, %s)"
+query = "INSERT INTO reddit_data (reddit, post) VALUES (rMusic, %s)"
 mycursor.executemany(query, [(r,) for r in rMusic])
 mydb.commit()
 print(mycursor.rowcount, "records inserted.")
