@@ -1,4 +1,6 @@
 import mysql.connector
+import re
+import praw
 
 mydb = mysql.connector.connect(
     auth_plugin='mysql_native_password',
@@ -8,10 +10,6 @@ mydb = mysql.connector.connect(
     password='rw46h305wujysstf'
 )
 
-import praw
-import csv
-
-import re
 myre = re.compile(u'('
                   u'\ud83c[\udf00-\udfff]|'
                   u'\ud83d[\udc00-\ude4f]|'
@@ -45,15 +43,10 @@ for submission in reddit.subreddit('music').top('week'):
         rMusic.append(myre.sub(' ', submission.title))
 
 mycursor = mydb.cursor()
-query = "INSERT INTO rMusicData (reddit_post) VALUES (%s)"
+query = "INSERT INTO songs (reddit, data) VALUES (rMusic, %s)"
 mycursor.executemany(query, [(r,) for r in rMusic])
 mydb.commit()
 print(mycursor.rowcount, "records inserted.")
-
-with open("csv/rMusicData.csv", "w") as f:
-    wr = csv.writer(f, delimiter="\n")
-    rMusic = [text.encode("utf8") for text in rMusic]
-    wr.writerow(rMusic)
 
 # ---------------------------------------------------------
 
@@ -67,15 +60,10 @@ for submission in reddit.subreddit('electronicmusic').top('week'):
     rElectronicMusic.append(myre.sub(' ', submission.title))
 
 mycursor = mydb.cursor()
-query = "INSERT INTO rElectronicMusicData (reddit_post) VALUES (%s)"
+query = "INSERT INTO songs (reddit, data) VALUES (rElectronicMusic, %s)"
 mycursor.executemany(query, [(r,) for r in rElectronicMusic])
 mydb.commit()
 print(mycursor.rowcount, "records inserted.")
-
-with open("csv/rElectronicMusicData.csv", "w") as f:
-    wr = csv.writer(f, delimiter="\n")
-    rElectronicMusic = [text.encode("utf8") for text in rElectronicMusic]
-    wr.writerow(rElectronicMusic)
 
 # ---------------------------------------------------------
 
@@ -89,15 +77,10 @@ for submission in reddit.subreddit('hiphopheads').top('week'):
     rHipHopHeads.append(myre.sub(' ', submission.title))
 
 mycursor = mydb.cursor()
-query = "INSERT INTO rHipHopHeadsData (reddit_post) VALUES (%s)"
+query = "INSERT INTO songs (reddit, data) VALUES (rHipHopHeads, %s)"
 mycursor.executemany(query, [(r,) for r in rHipHopHeads])
 mydb.commit()
 print(mycursor.rowcount, "records inserted.")
-
-with open("csv/rHipHopHeadsData.csv", "w") as f:
-    wr = csv.writer(f, delimiter="\n")
-    rHipHopHeads = [text.encode("utf8") for text in rHipHopHeads]
-    wr.writerow(rHipHopHeads)
 
 # ---------------------------------------------------------
 
@@ -111,15 +94,10 @@ for submission in reddit.subreddit('rock').top('week'):
     rRock.append(myre.sub(' ', submission.title))
 
 mycursor = mydb.cursor()
-query = "INSERT INTO rRockData (reddit_post) VALUES (%s)"
+query = "INSERT INTO songs (reddit, data) VALUES (rRock, %s)"
 mycursor.executemany(query, [(r,) for r in rRock])
 mydb.commit()
 print(mycursor.rowcount, "records inserted.")
-
-with open("csv/rRockData.csv", "w") as f:
-    wr = csv.writer(f, delimiter="\n")
-    rRock = [text.encode("utf8") for text in rRock]
-    wr.writerow(rRock)
 
 # ---------------------------------------------------------
 
@@ -133,14 +111,9 @@ for submission in reddit.subreddit('metal').top('week'):
     rMetal.append(myre.sub(' ', submission.title))
 
 mycursor = mydb.cursor()
-query = "INSERT INTO rMetalData (reddit_post) VALUES (%s)"
+query = "INSERT INTO songs (reddit, data) VALUES (rMetal, %s)"
 mycursor.executemany(query, [(r,) for r in rMetal])
 mydb.commit()
 print(mycursor.rowcount, "records inserted.")
-
-with open("csv/rMetalData.csv", "w") as f:
-    wr = csv.writer(f, delimiter="\n")
-    rMetal = [text.encode("utf8") for text in rMetal]
-    wr.writerow(rMetal)
 
 # ---------------------------------------------------------
