@@ -1,0 +1,26 @@
+{
+  "name": "reddit-spotify-scrape",
+  "version": "1.0.0",
+  "description": "Scrape music subreddits and create a list of spotify song links.",
+  "main": "keys.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theinfamousAK/reddit-spotify-scrape.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theinfamousAK/reddit-spotify-scrape/issues"
+  },
+  "homepage": "https://github.com/theinfamousAK/reddit-spotify-scrape#readme",
+  "dependencies": {
+    "csv-to-array": "^1.0.2",
+    "dotenv": "^6.1.0",
+    "mysql": "^2.16.0",
+    "node-spotify-api": "^1.0.7"
+  }
+}
