@@ -2,10 +2,10 @@ import mysql.connector
 
 mydb = mysql.connector.connect(
     auth_plugin='mysql_native_password',
-    host='localhost',
-    database='redditDB',
-    user='root',
-    password='password'
+    host='h2cwrn74535xdazj.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+    database='jynu5pnzsyskg9w8',
+    user='k2yk6gycuf110gz7',
+    password='mg91bdtm4k434pgw'
 )
 
 import praw
