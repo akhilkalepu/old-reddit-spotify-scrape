@@ -12,7 +12,7 @@ var connection = mysql.createConnection({
     host: "h2cwrn74535xdazj.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     port: 3306,
     user: "r3fk7motovq38x7d",
-    password: "rw46h305wujysstf",
+    password: "r07kl17y3p4snxcg",
     database: "gvw7pe966nc47xrf"
 });
 
@@ -35,6 +35,9 @@ rMusicScrape();
 // ---------/r/music scrape---------
 function rMusicScrape() {
 
+    connection.query("TRUNCATE TABLE rMusic", function (err, res) {
+        if (err) throw err;
+    });
     connection.query("SELECT * FROM rMusicData", function (err, res) {
         if (err) throw err;
         
@@ -85,13 +88,16 @@ function rMusicScrape() {
             });
         }
     });
-    nextScrapeElectronicMusic();
-    // exit();
+    // nextScrapeElectronicMusic();
+    exit();
 };
 // ---------------------------------------
 
 // ---------/r/electronicmusic scrape---------
 function rElectronicMusicScrape() {
+    connection.query("TRUNCATE TABLE rElectronicMusic", function (err, res) {
+        if (err) throw err;
+    });
     connection.query("SELECT * FROM rElectronicMusicData", function (err, res) {
         if (err) throw err;
 
@@ -148,6 +154,9 @@ function rElectronicMusicScrape() {
 
 // ---------/r/hiphopheads scrape---------
 function rHipHopHeadsScrape() {
+    connection.query("TRUNCATE TABLE rHipHopHeads", function (err, res) {
+        if (err) throw err;
+    });
     connection.query("SELECT * FROM rHipHopHeadsData", function (err, res) {
         if (err) throw err;
 
@@ -204,6 +213,9 @@ function rHipHopHeadsScrape() {
 
 // ---------/r/rock scrape---------
 function rRockScrape() {
+    connection.query("TRUNCATE TABLE rRock", function (err, res) {
+        if (err) throw err;
+    });
     connection.query("SELECT * FROM rRockData", function (err, res) {
         if (err) throw err;
 
@@ -260,6 +272,9 @@ function rRockScrape() {
 
 // ---------/r/metal scrape---------
 function rMetalScrape() {
+    connection.query("TRUNCATE TABLE rMetal", function (err, res) {
+        if (err) throw err;
+    });
     connection.query("SELECT * FROM rMetalData", function (err, res) {
         if (err) throw err;
 
