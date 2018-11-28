@@ -4,7 +4,7 @@ import praw
 
 mydb = mysql.connector.connect(
     auth_plugin='mysql_native_password',
-    host=' 	mna97msstjnkkp7h.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+    host='mna97msstjnkkp7h.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
     database='fi3c8use3ezgnex1',
     user='g4myq7efwpxxc242',
     password='pv2ctsyv548vekjo'
@@ -43,6 +43,7 @@ for submission in reddit.subreddit('music').top('week'):
         rMusic.append(myre.sub(' ', submission.title))
 
 mycursor = mydb.cursor()
+mycursor.execute("TRUNCATE TABLE rMusicData")
 query = "INSERT INTO rMusicData (reddit_post) VALUES (%s)"
 mycursor.executemany(query, [(r,) for r in rMusic])
 mydb.commit()
@@ -50,70 +51,70 @@ print(mycursor.rowcount, "records inserted.")
 
 # ---------------------------------------------------------
 
-# /r/electronicmusic scrape NEEDS FILTERING NO POST FLAIR?
-# ---------------------------------------------------------
+# # /r/electronicmusic scrape NEEDS FILTERING NO POST FLAIR?
+# # ---------------------------------------------------------
 
-rElectronicMusic = []
+# rElectronicMusic = []
 
-for submission in reddit.subreddit('electronicmusic').top('week'):
-    # if submission.link_flair_text == 'music streaming':
-    rElectronicMusic.append(myre.sub(' ', submission.title))
+# for submission in reddit.subreddit('electronicmusic').top('week'):
+#     # if submission.link_flair_text == 'music streaming':
+#     rElectronicMusic.append(myre.sub(' ', submission.title))
 
-mycursor = mydb.cursor()
-query = "INSERT INTO rElectronicMusicData (reddit_post) VALUES (%s)"
-mycursor.executemany(query, [(r,) for r in rElectronicMusic])
-mydb.commit()
-print(mycursor.rowcount, "records inserted.")
+# mycursor = mydb.cursor()
+# query = "INSERT INTO rElectronicMusicData (reddit_post) VALUES (%s)"
+# mycursor.executemany(query, [(r,) for r in rElectronicMusic])
+# mydb.commit()
+# print(mycursor.rowcount, "records inserted.")
 
-# ---------------------------------------------------------
+# # ---------------------------------------------------------
 
-# /r/hiphopheads scrape NEEDS FILTERING NO POST FLAIR?
-# ---------------------------------------------------------
+# # /r/hiphopheads scrape NEEDS FILTERING NO POST FLAIR?
+# # ---------------------------------------------------------
 
-rHipHopHeads = []
+# rHipHopHeads = []
 
-for submission in reddit.subreddit('hiphopheads').top('week'):
-    # if submission.link_flair_text == 'music streaming':
-    rHipHopHeads.append(myre.sub(' ', submission.title))
+# for submission in reddit.subreddit('hiphopheads').top('week'):
+#     # if submission.link_flair_text == 'music streaming':
+#     rHipHopHeads.append(myre.sub(' ', submission.title))
 
-mycursor = mydb.cursor()
-query = "INSERT INTO rHipHopHeadsData (reddit_post) VALUES (%s)"
-mycursor.executemany(query, [(r,) for r in rHipHopHeads])
-mydb.commit()
-print(mycursor.rowcount, "records inserted.")
+# mycursor = mydb.cursor()
+# query = "INSERT INTO rHipHopHeadsData (reddit_post) VALUES (%s)"
+# mycursor.executemany(query, [(r,) for r in rHipHopHeads])
+# mydb.commit()
+# print(mycursor.rowcount, "records inserted.")
 
-# ---------------------------------------------------------
+# # ---------------------------------------------------------
 
-# /r/rock scrape NEEDS FILTERING NO POST FLAIR?
-# ---------------------------------------------------------
+# # /r/rock scrape NEEDS FILTERING NO POST FLAIR?
+# # ---------------------------------------------------------
 
-rRock = []
+# rRock = []
 
-for submission in reddit.subreddit('rock').top('week'):
-    # if submission.link_flair_text == 'music streaming':
-    rRock.append(myre.sub(' ', submission.title))
+# for submission in reddit.subreddit('rock').top('week'):
+#     # if submission.link_flair_text == 'music streaming':
+#     rRock.append(myre.sub(' ', submission.title))
 
-mycursor = mydb.cursor()
-query = "INSERT INTO rRockData (reddit_post) VALUES (%s)"
-mycursor.executemany(query, [(r,) for r in rRock])
-mydb.commit()
-print(mycursor.rowcount, "records inserted.")
+# mycursor = mydb.cursor()
+# query = "INSERT INTO rRockData (reddit_post) VALUES (%s)"
+# mycursor.executemany(query, [(r,) for r in rRock])
+# mydb.commit()
+# print(mycursor.rowcount, "records inserted.")
 
-# ---------------------------------------------------------
+# # ---------------------------------------------------------
 
-# /r/metal scrape NEEDS FILTERING NO POST FLAIR?
-# ---------------------------------------------------------
+# # /r/metal scrape NEEDS FILTERING NO POST FLAIR?
+# # ---------------------------------------------------------
 
-rMetal = []
+# rMetal = []
 
-for submission in reddit.subreddit('metal').top('week'):
-    # if submission.link_flair_text == 'music streaming':
-    rMetal.append(myre.sub(' ', submission.title))
+# for submission in reddit.subreddit('metal').top('week'):
+#     # if submission.link_flair_text == 'music streaming':
+#     rMetal.append(myre.sub(' ', submission.title))
 
-mycursor = mydb.cursor()
-query = "INSERT INTO rMetalData (reddit_post) VALUES (%s)"
-mycursor.executemany(query, [(r,) for r in rMetal])
-mydb.commit()
-print(mycursor.rowcount, "records inserted.")
+# mycursor = mydb.cursor()
+# query = "INSERT INTO rMetalData (reddit_post) VALUES (%s)"
+# mycursor.executemany(query, [(r,) for r in rMetal])
+# mydb.commit()
+# print(mycursor.rowcount, "records inserted.")
 
-# ---------------------------------------------------------
+# # ---------------------------------------------------------
