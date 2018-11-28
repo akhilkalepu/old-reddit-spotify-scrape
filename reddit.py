@@ -7,7 +7,7 @@ mydb = mysql.connector.connect(
     host='h2cwrn74535xdazj.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
     database='gvw7pe966nc47xrf',
     user='r3fk7motovq38x7d',
-    password='rw46h305wujysstf'
+    password='r07kl17y3p4snxcg'
 )
 
 myre = re.compile(u'('
@@ -43,7 +43,7 @@ for submission in reddit.subreddit('music').top('week'):
         rMusic.append(myre.sub(' ', submission.title))
 
 mycursor = mydb.cursor()
-query = "INSERT INTO reddit_data (reddit, post) VALUES (rMusic, %s)"
+query = "INSERT INTO songs (reddit, data) VALUES (rMusic, %s)"
 mycursor.executemany(query, [(r,) for r in rMusic])
 mydb.commit()
 print(mycursor.rowcount, "records inserted.")
