@@ -44,8 +44,8 @@ for submission in reddit.subreddit('music').top('week'):
 
 mycursor = mydb.cursor()
 mycursor.execute("TRUNCATE TABLE rMusicData")
-# query = "INSERT INTO rMusicData (reddit_post) VALUES (%s)"
-# mycursor.executemany(query, [(r,) for r in rMusic])
+query = "INSERT INTO rMusicData (reddit_post) VALUES (%s)"
+mycursor.executemany(query, [(r,) for r in rMusic])
 mydb.commit()
 print(mycursor.rowcount, "records inserted.")
 
@@ -62,8 +62,8 @@ for submission in reddit.subreddit('electronicmusic').top('week'):
 
 mycursor = mydb.cursor()
 mycursor.execute("TRUNCATE TABLE rElectronicMusicData")
-# query = "INSERT INTO rElectronicMusicData (reddit_post) VALUES (%s)"
-# mycursor.executemany(query, [(r,) for r in rElectronicMusic])
+query = "INSERT INTO rElectronicMusicData (reddit_post) VALUES (%s)"
+mycursor.executemany(query, [(r,) for r in rElectronicMusic])
 mydb.commit()
 print(mycursor.rowcount, "records inserted.")
 
@@ -80,8 +80,8 @@ for submission in reddit.subreddit('hiphopheads').top('week'):
 
 mycursor = mydb.cursor()
 mycursor.execute("TRUNCATE TABLE rHipHopHeadsData")
-# query = "INSERT INTO rHipHopHeadsData (reddit_post) VALUES (%s)"
-# mycursor.executemany(query, [(r,) for r in rHipHopHeads])
+query = "INSERT INTO rHipHopHeadsData (reddit_post) VALUES (%s)"
+mycursor.executemany(query, [(r,) for r in rHipHopHeads])
 mydb.commit()
 print(mycursor.rowcount, "records inserted.")
 
@@ -98,8 +98,8 @@ for submission in reddit.subreddit('rock').top('week'):
 
 mycursor = mydb.cursor()
 mycursor.execute("TRUNCATE TABLE rRockData")
-# query = "INSERT INTO rRockData (reddit_post) VALUES (%s)"
-# mycursor.executemany(query, [(r,) for r in rRock])
+query = "INSERT INTO rRockData (reddit_post) VALUES (%s)"
+mycursor.executemany(query, [(r,) for r in rRock])
 mydb.commit()
 print(mycursor.rowcount, "records inserted.")
 
@@ -116,8 +116,8 @@ for submission in reddit.subreddit('metal').top('week'):
 
 mycursor = mydb.cursor()
 mycursor.execute("TRUNCATE TABLE rMetalData")
-# query = "INSERT INTO rMetalData (reddit_post) VALUES (%s)"
-# mycursor.executemany(query, [(r,) for r in rMetal])
+query = "INSERT INTO rMetalData (reddit_post) VALUES (%s)"
+mycursor.executemany(query, [(r,) for r in rMetal])
 mydb.commit()
 print(mycursor.rowcount, "records inserted.")
 
