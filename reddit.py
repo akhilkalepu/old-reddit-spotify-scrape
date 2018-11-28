@@ -1,5 +1,5 @@
+import mysql.connector
 import re
-import csv
 import praw
 
 mydb = mysql.connector.connect(
